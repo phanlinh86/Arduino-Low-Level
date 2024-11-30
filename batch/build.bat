@@ -16,6 +16,15 @@ set PATH=%PATH%;C:\Users\Phan Linh\Programs\avr8-gnu-toolchain\bin
 set PATH=%PATH%;C:\Users\Phan Linh\Programs\avr8-gnu-toolchain\avr\bin
 set PATH=%PATH%;C:\Users\Phan Linh\Programs\avrdude-mingw32
 
+:: Check build directory exists
+if not exist build ( 
+    mkdir build 
+) else (
+    echo Deleting old build files
+    del /Q build\*
+)
+
+
 :: Compile the sketch
 echo avr-gcc -Wall -Os -DF_CPU=16000000UL -mmcu=atmega328p -c -o build\%PROJECT_NAME%.o source\%PROJECT_NAME%%.cpp
 avr-gcc -Wall -Os -DF_CPU=16000000UL -mmcu=atmega328p -c -o build\%PROJECT_NAME%.o source\%PROJECT_NAME%%.cpp
