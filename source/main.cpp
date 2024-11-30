@@ -11,7 +11,7 @@ static void (*pfProject) (void); // Pointer to the function to be called by diff
 int main(void)
 {
     pfProject = ProjectBlinkLed; // Set the project function            
-    while(1) {        
+    while(1) {
         // Same as loop in Arduino
         (*pfProject) (); // Call the project function  
     } 
