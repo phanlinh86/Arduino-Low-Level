@@ -1,3 +1,4 @@
 build/main.elf
 build/main.hex
 build/main.o
+.vscode/*.*

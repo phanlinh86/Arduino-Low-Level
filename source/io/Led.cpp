@@ -5,7 +5,7 @@
 
 // Build-in LED
 
-static void io_ToggleLed(void)
+static void io_BlinkLed(void)
 {
     TCNT1 = 0; // Reset the counter
     PORTB ^= _BV(PORTB5); // Toggle the LED

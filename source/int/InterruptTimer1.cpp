@@ -25,10 +25,6 @@ static unsigned int GetTimer1Counter();
 static void ProgramTimer1(void);
     #endif // USE_MAX_RESOLUTION == 0
 
-
-
-
-
 static void (*pfServiceTimer1) (void); // Pointer to the function to be called when the Timer1 interrupt occurs
 
 static void DoTimer1Isr(void)
