@@ -4,17 +4,6 @@
 
 #include "main.h"
 
-    #if ( PROJECT == PROJECT_BLINK_LED )
-#include "project/BlinkLed.cpp"
-    #elif ( PROJECT == PROJECT_DISPLAY_CLOCK  )
-#include "project/DisplayClock.cpp"
-    #else // PROJECT == PROJECT_INVALID
-// Invalid project name
-#error('Unsupported PROJECT')
-    #endif // PROJECT == ??
-
-static void (*pfProject) (void); // Pointer to the function to be called by different project
-static void SetProject(void);    // Set pfProject to call project function
 
 int main(void)
 {
@@ -30,12 +19,13 @@ int main(void)
 
 void SetProject()
 {
-    #if ( PROJECT == PROJECT_BLINK_LED )
-        pfProject = ProjectBlinkLed; // Set the project function
-    #elif ( PROJECT == PROJECT_DISPLAY_CLOCK  )
-        pfProject = ProjectDisplayClock; // Set the project function
-    #else // PROJECT == PROJECT_INVALID
-        // Invalid project name
+        #if ( PROJECT == PROJECT_BLINK_LED )
+    pfProject = ProjectBlinkLed; // Set the project function
+        #elif ( PROJECT == PROJECT_DISPLAY_CLOCK  )
+    pfProject = ProjectDisplayClock; // Set the project function
+        #elif ( PROJECT == PROJECT_PS2 )
+    pfProject = ProjectPS2; // Set the project function
+        #else // PROJECT == PROJECT_INVALID
     #error('Unsupported PROJECT')
-    #endif // PROJECT == ??
+        #endif // PROJECT == ??
 }
